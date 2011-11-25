@@ -1,8 +1,12 @@
+package advancedmath;
+
 /**
  * @author Fahd Ananta
  */
 public class AdvancedMath {
 
+    private static final double LOG_2 = Math.log(2.0);
+    
     /**
      * ComplexNumberException
      */
@@ -61,7 +65,7 @@ public class AdvancedMath {
      * @throws ComplexNumberException when complex number involved
      */
     public static double acosh(double x) throws ComplexNumberException {
-        if (((-1 + x) < 0) || ((1 + x) < 0)) {
+        if (x < 1) {
             throw new ComplexNumberException();
         }
         return Math.log(x + (Math.sqrt(-1 + x) * Math.sqrt(1 + x)));
@@ -100,7 +104,7 @@ public class AdvancedMath {
      * @return the base 2 logarithm of x
      */
     public static double log2(double x) {
-        return (Math.log(x) / Math.log(2.0));
+        return (Math.log(x) / LOG_2);
     }
 
     /**
