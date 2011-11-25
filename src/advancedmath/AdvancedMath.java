@@ -6,6 +6,7 @@ package advancedmath;
 public class AdvancedMath {
 
     private static class ComplexNumberException extends Exception {
+
         public ComplexNumberException() {
             super("Exception: Complex number generated");
         }
@@ -31,18 +32,25 @@ public class AdvancedMath {
     }
 
     public static double acosh(int x) throws ComplexNumberException {
-        if (((-1 + x) < 0) || ((1 + x) < 0))
-            throw new ComplexNumberException();        
+        if (((-1 + x) < 0) || ((1 + x) < 0)) {
+            throw new ComplexNumberException();
+        }
         return Math.log(x + (Math.sqrt(-1 + x) * Math.sqrt(1 + x)));
+    }
+
+    public static double asinh(int x) throws ComplexNumberException {
+        double innerResult = x + Math.sqrt(1 + Math.pow((double) x, 2.0));
+        if (innerResult < 0) {
+            throw new ComplexNumberException();
+        }
+        return Math.log(innerResult);
     }
 
     public static void main(String[] args) {
         try {
-            System.out.println(acosh(2));
+            System.out.println(asinh(0));
         } catch (ComplexNumberException e) {
             System.err.println(e.getMessage());
         }
     }
-
-
 }
