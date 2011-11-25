@@ -1,7 +1,6 @@
 package advancedmath;
 
 /**
- * 
  * @author Fahd Ananta
  */
 public class AdvancedMath {
