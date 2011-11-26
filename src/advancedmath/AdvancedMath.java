@@ -6,7 +6,7 @@ package advancedmath;
 public class AdvancedMath {
 
     private static final double LOG_2 = Math.log(2.0);
-    
+
     /**
      * ComplexNumberException
      */
@@ -92,7 +92,7 @@ public class AdvancedMath {
      * @throws ComplexNumberException when complex number involved
      */
     public static double atanh(double x) throws ComplexNumberException {
-        if ((x <= -1) || (x >= 1)) {
+        if (Math.abs(x) >= 1.0) {
             throw new ComplexNumberException();
         }
         return (0.5 * (Math.log(1 + x) - Math.log(1 - x)));
@@ -126,24 +126,6 @@ public class AdvancedMath {
      * @return truncated value
      */
     public static double trunc(double x, int i) {
-        String xAsString = Double.toString(x);
-        String neg = (x < 0) ? "-" : "";
-        String pre = xAsString.substring(neg.length(), xAsString.indexOf('.'));
-        String post = xAsString.substring(xAsString.indexOf('.') + 1);
-        double result;
-
-        if (i > 0) {
-            i = (i > post.length()) ? post.length() : i;
-            result = Double.parseDouble(neg.concat(
-                    pre.concat("." + post.substring(0, i))));
-        } else if (i < 0) {
-            result = ((-1 * i) >= pre.length()) ? 0.0 : (Double.parseDouble(
-                    neg.concat(pre.substring(0, pre.length() - (-1 * i))))
-                    * Math.pow(10, (-1 * i)));
-        } else { // i == 0
-            result = Double.parseDouble(neg.concat(pre));
-        }
-
-        return result;
+        return ((int) (x * Math.pow(10, i))) / Math.pow(10, i);
     }
 }
