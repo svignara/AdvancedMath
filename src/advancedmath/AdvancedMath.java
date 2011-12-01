@@ -126,6 +126,7 @@ public class AdvancedMath {
      * @return truncated value
      */
     public static double trunc(double x, int i) {
-        return ((int) (x * Math.pow(10, i))) / Math.pow(10, i);
+        double value = Math.pow(10, i); //Store to avoid computing multiple times
+        return ((int) (x * value)) / value;
     }
 }
