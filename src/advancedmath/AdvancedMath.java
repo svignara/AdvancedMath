@@ -37,7 +37,8 @@ public class AdvancedMath {
      * @return cosh(x)
      */
     public static double cosh(double x) {
-        return (0.5 * (Math.exp(-1 * x) + Math.exp(x)));
+        double value = Math.exp(x);
+        return (0.5 * ((1 / value) + value));
     }
 
     /**
@@ -46,7 +47,8 @@ public class AdvancedMath {
      * @return sinh(x)
      */
     public static double sinh(double x) {
-        return (0.5 * ((-1) * Math.exp(-1 * x) + Math.exp(x)));
+        double value = Math.exp(x);
+        return (0.5 * ((-1) * (1 / value) + value));
     }
 
     /**
